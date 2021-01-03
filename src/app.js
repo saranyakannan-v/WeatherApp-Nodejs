@@ -10,6 +10,7 @@ console.log(path.join(__dirname, '../public'))
 // console.log(__filename) // it gives the file name
 
 const app = express()
+const port = process.env.PORT || 3000 // Heroku port
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -100,7 +101,12 @@ app.get('*', (req, res) => {
     })
 })
 
-// Listen to the port 3000
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+// // Listen to the port 3000
+// app.listen(3000, () => {
+//     console.log('Server is up on port 3000.')
+// })
+
+// Heroku port and local port setting
+app.listen(port, () => {
+    console.log('Server is up on port' + port)
 })
